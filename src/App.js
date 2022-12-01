@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react' 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import About from './components/about'
+import Users from './components/users'
+import Game from './components/game/game';
+import './style/navigation/navigation.css'
 
-function App() {
+
+export default function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='header'>
+        <div className="logo">
+          MAFIA GAME
+        </div>
+        <nav className='navigation'>
+          <div className='navigation__element navigation__home'>
+            <Link to="/">Home</Link>
+          </div>
+
+          <div className='navigation__element navigation__rating'>
+            <Link to="/about">Rating</Link>          
+          </div>
+          
+          <div className='navigation__element navigation__about'>
+            <Link to="/users">About</Link>
+          </div>    
+
+          <button className='navigation__element navigation__createGame'>
+            <Link to="/game">+Create Game</Link>
+          </button>
+        </nav>       
+      </div>
+      <Routes>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/game" element={<Game/>}/>
+          <Route path="/users" element={<Users/>}/>
+          <Route path="/" element={'HOME'}/>            
+          
+        </Routes>
+    </Router>
   );
 }
-
-export default App;
