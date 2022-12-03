@@ -1,12 +1,18 @@
 .player__row{
     display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.player__background{
+    display: flex;
     width: 400px;
     column-gap: 5px;
     justify-content: space-between;
     font-size: 20px;
     padding: 10px 30px;
     color: #fff;
-    
+    border-radius: 10px;
 }
 
 .player__fouls{
@@ -20,4 +26,39 @@
     font-size: 20px;
     color: #fff;
     cursor: pointer;
+}
+
+.player__role{
+    display: flex;
+}
+
+.player__roleDropdown{
+    display: flex;
+    background-color: #fff;
+    
+    height: 30px;
+    align-items: center;
+    
+}
+
+.player__roleOption{
+    border: none;
+    outline: none;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+.player__roleOption .MuiOutlinedInput-notchedOutline, .MuiSelect-select{
+    display: flex;
+    border: none;
+    align-items: center;
+    width: 100%;
+    
+}
+.player__roleOption .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

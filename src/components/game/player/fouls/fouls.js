@@ -1,6 +1,6 @@
 import {React} from 'react' 
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, selectCount} from '../../../store/reducers/fouls/fouls'
+import { decrement, increment, selectCount} from '../../../../store/reducers/fouls/fouls'
 
 export default function Fouls({id}){
     const count = useSelector(selectCount)

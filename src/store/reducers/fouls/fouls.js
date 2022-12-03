@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import * as actions from '../../actions/fouls/fouls'
 
 export const foulsSlice = createSlice({
   name: 'fouls',
@@ -9,10 +10,10 @@ export const foulsSlice = createSlice({
     },
   reducers: {
     increment: (state,action) => {
-        state.values[action.payload] += 1
+      state.values[action.payload] = actions.increment(state.values[action.payload])
     },
     decrement: (state,action) => {
-        state.values[action.payload] -= 1
+      state.values[action.payload] = actions.decrement(state.values[action.payload])
     },
     
   }
