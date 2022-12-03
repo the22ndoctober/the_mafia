@@ -12,13 +12,13 @@ export default function Roles({showRoles,id}){
     const dispatch = useDispatch()
 
     const handleChange = (event)=>{
-        dispatch(setRole({payload: id, type: event.target.value}))
+        dispatch(setRole([id, event.target.value]))
     }
-    
     
      return(
         
         <div className="player__role" style={{display: showRoles? 'block' : 'none'}}>
+
             <FormControl sx={{ m: 1, minWidth: 120}} size="small" className='player__roleDropdown'>
                 <Select
                 className='player__roleOption'
