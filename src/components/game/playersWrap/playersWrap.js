@@ -20,6 +20,7 @@ export default function PlayersWrap(){
 
     const [showRoles, setShowRoles] = useState(true)
 
+
     return(
         <div className="players">
 
@@ -30,10 +31,12 @@ export default function PlayersWrap(){
                                     name={player.name} 
                                     color={enums.playerColors[player.slot]}
                                     showRoles={showRoles}
+                                    
                                     />
                 })}
             </div>
             <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
+            
         </div>
     )
 

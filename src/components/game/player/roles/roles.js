@@ -10,6 +10,7 @@ export default function Roles({showRoles,id}){
     
     const role = useSelector(selectRole);
     const dispatch = useDispatch()
+    
 
     const handleChange = (event)=>{
         dispatch(setRole([id, event.target.value]))
@@ -25,7 +26,7 @@ export default function Roles({showRoles,id}){
                 value={role[id]}
                 onChange={handleChange}
                 displayEmpty
-                inputProps={{ 'aria-label': 'Without label', readOnly: false }}
+                inputProps={{ 'aria-label': 'Without label'}}
                 >
                     <MenuItem className='player__roleOption' value={enums.roles.none}>
                         {enums.roles.none}
