@@ -3,7 +3,7 @@ import Player from '../player/player'
 import enums from '../../../store/enums'
 
 export default function PlayersWrap(){
-    
+
     const [playersList, setPlayersList] = useState([
         {name:'Floppy', slot:0},
         {name:'Braun', slot:1},
@@ -20,6 +20,15 @@ export default function PlayersWrap(){
 
     const [showRoles, setShowRoles] = useState(true)
 
+    const [onVote, setOnVote] = useState(['none','none','none','none','none','none','none','none','none','none'])
+
+    const pullOnVote = id =>{
+        setOnVote(onVote.map((player,ind)=>{
+            if(id===ind){
+                player = id
+            }
+        }))
+    }
 
     return(
         <div className="players">
@@ -31,7 +40,10 @@ export default function PlayersWrap(){
                                     name={player.name} 
                                     color={enums.playerColors[player.slot]}
                                     showRoles={showRoles}
-                                    
+                                    pullOnVote={()=>{
+                                        pullOnVote(player.slot)
+                                    }}
+                                    onVote={onVote[player.slot]}
                                     />
                 })}
             </div>
