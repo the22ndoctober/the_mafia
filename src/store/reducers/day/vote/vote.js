@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import * as actions from '../../actions/vote/vote'
-import enums from '../../enums'
+import * as actions from '../../../actions/day/vote/vote'
+import enums from '../../../enums'
 
 export const voteSlice = createSlice({
   name: 'vote',

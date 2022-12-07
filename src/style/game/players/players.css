@@ -62,3 +62,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.player__onVote{
+    color: #fff;
+}

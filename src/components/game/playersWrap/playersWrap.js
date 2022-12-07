@@ -23,10 +23,10 @@ export default function PlayersWrap(){
     const [onVote, setOnVote] = useState(['none','none','none','none','none','none','none','none','none','none'])
 
     const pullOnVote = id =>{
+        console.log(onVote)
         setOnVote(onVote.map((player,ind)=>{
-            if(id===ind){
-                player = id
-            }
+            if(id===ind) return id
+            if(id!=ind) return 'none'
         }))
     }
 
