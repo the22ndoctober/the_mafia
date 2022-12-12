@@ -16,8 +16,10 @@ export default function Player({slot,name,color,showRoles}){
             <Fouls id={slot}/>   
         </div>
         <Roles showRoles={showRoles} id={slot}/>
-        <button onClick={()=>{dispatch(pullOnVote({pull:1,exposed:2}))}}>PRESS ME FUCKING RETARD</button>
-        <button onClick={()=>{dispatch(pullOnVote({pull:2,exposed:3}))}}>PRESS ME FUCKING again!!</button>
+        <button onClick={()=>{dispatch(pullOnVote({pull:3,exposed:4}))}}>PRESS ME FUCKING RETARD</button>
+        <button onClick={()=>{dispatch(pullOnVote({pull:4,exposed:3}))}}>PRESS ME FUCKING again!!</button>
+        <button onClick={()=>{dispatch(removeFromVote())}}>PRESS ME FUCKING again!!</button>
+
      </div>
      )
 

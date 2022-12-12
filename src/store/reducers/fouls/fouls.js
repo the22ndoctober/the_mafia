@@ -11,6 +11,7 @@ export const foulsSlice = createSlice({
   reducers: {
     increment: (state,action) => {
       state.values[action.payload] = actions.increment(state.values[action.payload])
+      console.log(state.values)
     },
     decrement: (state,action) => {
       state.values[action.payload] = actions.decrement(state.values[action.payload])
