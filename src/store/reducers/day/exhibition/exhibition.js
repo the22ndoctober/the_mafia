@@ -4,12 +4,11 @@ import * as actions from '../../../actions/day/exhibition/exhibition'
 export const exhibitionSlice = createSlice({
   name: 'exhibition',
   initialState: {
-    values: [{pull: 3, exposed: 4}, {pull:1, exposed: 5}]
+    values: []
     },
   reducers: {
     pullOnVote: (state,action) => {
-      state.values[0] = actions.pullOnVote(state.values, action.payload)
-      console.log(state.values.toString())
+      state.values = actions.pullOnVote(state.values, action.payload)
     },
     removeFromVote: (state,action)=>{
         console.log(state.values[0].pull)
