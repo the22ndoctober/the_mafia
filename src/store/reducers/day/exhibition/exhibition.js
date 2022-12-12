@@ -12,6 +12,9 @@ export const exhibitionSlice = createSlice({
     },
     removeFromVote: (state,action)=>{
         console.log(state.values[0].pull)
+        console.log(state.values[0].exposed)
+        console.log(state.values[1].pull)
+        console.log(state.values[1].exposed)
     },
     
   }
