@@ -20,16 +20,6 @@ export default function PlayersWrap(){
 
     const [showRoles, setShowRoles] = useState(true)
 
-    const [onVote, setOnVote] = useState(['none','none','none','none','none','none','none','none','none','none'])
-
-    const pullOnVote = id =>{
-        console.log(onVote)
-        setOnVote(onVote.map((player,ind)=>{
-            if(id===ind) return id
-            if(id!=ind) return 'none'
-        }))
-    }
-
     return(
         <div className="players">
 
@@ -40,10 +30,6 @@ export default function PlayersWrap(){
                                     name={player.name} 
                                     color={enums.playerColors[player.slot]}
                                     showRoles={showRoles}
-                                    pullOnVote={()=>{
-                                        pullOnVote(player.slot)
-                                    }}
-                                    onVote={onVote[player.slot]}
                                     />
                 })}
             </div>
