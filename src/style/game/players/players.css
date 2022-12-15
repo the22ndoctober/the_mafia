@@ -6,7 +6,7 @@
 
 .player__background{
     display: flex;
-    width: 400px;
+    width: 300px;
     column-gap: 5px;
     justify-content: space-between;
     font-size: 20px;
@@ -18,6 +18,16 @@
 .player__background-active{
     outline: 3px solid rgb(255, 174, 0);
     box-sizing: border-box;
+}
+.player__exposed{
+    padding: 10px;
+    color: #fff;
+    min-width: 38px;
+    min-height: 38px;
+    text-align: center;
+}
+.player__exposed-hidden{
+    display: none;
 }
 
 .player__fouls{
@@ -31,6 +41,12 @@
     font-size: 20px;
     color: #fff;
     cursor: pointer;
+}
+
+.player__speakbutton{
+    padding: 10px;
+    color: #fff;
+    background-color: rgb(43, 138, 227);
 }
 
 .player__role{

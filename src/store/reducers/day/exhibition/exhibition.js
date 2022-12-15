@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 import * as actions from '../../../actions/day/exhibition/exhibition'
 
 export const exhibitionSlice = createSlice({
@@ -16,7 +16,7 @@ export const exhibitionSlice = createSlice({
     },
 
     removeFromVote: (state,action)=>{
-        console.log(state)
+        console.log(current(state))
     },
     
   }
