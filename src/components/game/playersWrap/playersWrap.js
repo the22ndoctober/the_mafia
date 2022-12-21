@@ -1,8 +1,11 @@
 import {React, useState} from 'react' 
 import Player from '../player/player'
 import enums from '../../../store/enums'
+import { showState } from '../../../store/reducers/day/exhibition/exhibition'
+import { useDispatch } from 'react-redux'
 
 export default function PlayersWrap(){
+    const dispatch = useDispatch()
 
     const [playersList, setPlayersList] = useState([
         {name:'Floppy', slot:0},
@@ -34,6 +37,7 @@ export default function PlayersWrap(){
                 })}
             </div>
             <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
+            <button className="players__showroles" onClick={()=>{dispatch(showState())}}>Show zalupa</button>
             
         </div>
     )

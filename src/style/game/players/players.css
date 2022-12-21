@@ -4,6 +4,10 @@
     column-gap: 12px;
 }
 
+.player__name {
+    cursor: pointer;
+}
+
 .player__background{
     display: flex;
     width: 300px;

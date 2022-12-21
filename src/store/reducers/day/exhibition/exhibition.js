@@ -16,13 +16,16 @@ export const exhibitionSlice = createSlice({
     },
 
     removeFromVote: (state,action)=>{
-        console.log(current(state))
+       state.values = actions.removeFromVote(state.values, action.payload)
     },
+    showState: (state, action) =>{
+      console.log(current(state))
+    }
     
   }
 })
 
-export const {makeActive, pullOnVote,removeFromVote} = exhibitionSlice.actions
+export const {makeActive, pullOnVote,removeFromVote,showState} = exhibitionSlice.actions
 
 export const selectExhibition = (state) => state.exhibition.values
 export const selectActive = (state) => state.exhibition.active
