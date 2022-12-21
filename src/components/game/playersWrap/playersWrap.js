@@ -1,11 +1,12 @@
 import {React, useState} from 'react' 
 import Player from '../player/player'
 import enums from '../../../store/enums'
-import { showState } from '../../../store/reducers/day/exhibition/exhibition'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectExhibition } from '../../../store/reducers/day/exhibition/exhibition'
 
 export default function PlayersWrap(){
     const dispatch = useDispatch()
+    const exhibation = useSelector(selectExhibition)
 
     const [playersList, setPlayersList] = useState([
         {name:'Floppy', slot:0},
@@ -25,7 +26,7 @@ export default function PlayersWrap(){
 
     return(
         <div className="players">
-
+            
             <div className="playersWrap">
                 {playersList.map(player=>{
                     return <Player  key={player.slot}
@@ -36,8 +37,13 @@ export default function PlayersWrap(){
                                     />
                 })}
             </div>
-            <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
-            <button className="players__showroles" onClick={()=>{dispatch(showState())}}>Show zalupa</button>
+
+            <div className="players__buttons">
+                <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
+                {exhibation.length > 0 && <button className='players__toVoteButton'>To vote</button>}
+                <button className="players__showroles" onClick={()=>{dispatch()}}>Show zalupa</button>
+            </div>
+            
             
         </div>
     )

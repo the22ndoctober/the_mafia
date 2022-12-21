@@ -9,9 +9,8 @@ export const pullOnVote = (state,exposed, active) =>{
         if(state.length > 0) return [...state, {pull: active, exposed: exposed}]
         
     }
-    else return state
-
     
+    return state
 }
 
 export const removeFromVote = (state, id) => {
