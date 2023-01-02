@@ -11,10 +11,11 @@ export default function Player({slot,name,color,showRoles}){
     const dispatch = useDispatch()
     const active = useSelector(selectActive)
     const exhibation = useSelector(selectExhibition)
+
     const [exposedPlayer, setExposedPlayer] = useState('none')
 
     useEffect(()=>{
-        if(active === slot && exhibation.length != 0){
+        if(exposedPlayer !== 'none' && active === slot && exhibation.length !== 0){
             setExposedPlayer(exhibation[exhibation.findIndex(exposed=> exposed.pull === slot)].exposed + 1)
         }
     }, [exhibation])
@@ -28,8 +29,10 @@ export default function Player({slot,name,color,showRoles}){
     }
 
     const remove = e =>{
-        dispatch(removeFromVote(e.target.value - 1))
+
+        dispatch(removeFromVote(e.target.innerText - 1))
         setExposedPlayer('none')
+        
     }
     
      return(
@@ -40,7 +43,7 @@ export default function Player({slot,name,color,showRoles}){
         </div>
         <Roles showRoles={showRoles} id={slot}/>
         <button className='player__speakbutton' onClick={activate}>Speak</button>
-        <div className={`player__exposed ${exposedPlayer != 'none' ? '' : 'player__exposed-hidden'}`} style={{backgroundColor: enums.playerColors[exposedPlayer-1]}} onClick={remove}>{exposedPlayer}</div>
+        <div className={`player__exposed ${exposedPlayer !== 'none' ? '' : 'player__exposed-hidden'}`} style={{backgroundColor: enums.playerColors[exposedPlayer-1]}} onClick={remove}>{exposedPlayer}</div>
      </div>
      )
 
