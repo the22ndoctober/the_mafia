@@ -1,10 +1,11 @@
 import {React, useState} from 'react' 
 import Player from '../player/player'
+import Vote from '../vote/vote'
 import enums from '../../../store/enums'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectExhibition } from '../../../store/reducers/day/exhibition/exhibition'
 
-export default function PlayersWrap(){
+export default function PlayersWrap({isOpen, openVotePopup,closeVotePopup}){
     const dispatch = useDispatch()
     const exhibation = useSelector(selectExhibition)
 
@@ -22,30 +23,38 @@ export default function PlayersWrap(){
         
     ])
 
+    
     const [showRoles, setShowRoles] = useState(true)
 
+    
+
     return(
-        <div className="players">
-            
-            <div className="playersWrap">
-                {playersList.map(player=>{
-                    return <Player  key={player.slot}
-                                    slot={player.slot} 
-                                    name={player.name} 
-                                    color={enums.playerColors[player.slot]}
-                                    showRoles={showRoles}
-                                    />
-                })}
+        <>
+
+            <div className="players">
+                
+                <div className="playersWrap">
+                    {playersList.map(player=>{
+                        return <Player  key={player.slot}
+                                        slot={player.slot} 
+                                        name={player.name} 
+                                        color={enums.playerColors[player.slot]}
+                                        showRoles={showRoles}
+                                        />
+                    })}
+                </div>
+
+                <div className="players__buttons">
+                    <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
+                    {exhibation.length > 0 && !isOpen ? <button className='players__toVoteButton' onClick={openVotePopup}>To vote</button> : <button className='players__toVoteButton' onClick={closeVotePopup}>Close Vote</button>}
+                </div>
+                
+                
             </div>
 
-            <div className="players__buttons">
-                <button className="players__showroles" onClick={()=>{setShowRoles(!showRoles)}}>Show Roles</button>
-                {exhibation.length > 0 && <button className='players__toVoteButton'>To vote</button>}
-                <button className="players__showroles" onClick={()=>{dispatch()}}>Show zalupa</button>
-            </div>
-            
-            
-        </div>
+            <Vote/>
+
+        </>
     )
 
 

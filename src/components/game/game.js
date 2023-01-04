@@ -1,13 +1,19 @@
-import {React} from 'react' 
+import {React, useState} from 'react' 
+import Vote from './vote/vote'
 import '../../style/game/game.css'
 import PlayersWrap from './playersWrap/playersWrap'
 import Timer from './timer/Timer'
 
 export default function Game(){
+    const [showVote, setShowVote] = useState(false)
+
+    const openVotePopup = ()=> setShowVote(true)
+    const closeVotePopup = ()=> setShowVote(false)
 
     return(
         <div className='game'>
-            <PlayersWrap/> 
+            <PlayersWrap isOpen={showVote} openVotePopup={openVotePopup} closeVotePopup={closeVotePopup}/>
+            <Vote isOpen={showVote}/>
             <Timer/>
         </div>  
     )
