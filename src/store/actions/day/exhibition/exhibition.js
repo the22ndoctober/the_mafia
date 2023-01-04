@@ -1,10 +1,10 @@
 export const pullOnVote = (state,exposed, active) =>{
     if(active !== 'none' ){
-        if(state.some(exhibition=> exhibition.pull === active)) return state.map(exhibition=> exhibition.pull === active ? {pull: active, exposed: exposed} : exhibition)         
         if(state.some(exhibition=> exhibition.exposed === exposed)){
             alert('alerdy exposed')
             return state
         }
+        if(state.some(exhibition=> exhibition.pull === active)) return state.map(exhibition=> exhibition.pull === active ? {pull: active, exposed: exposed} : exhibition)         
         if(state.length === 0) return [{pull: active, exposed: exposed}]
         if(state.length > 0) return [...state, {pull: active, exposed: exposed}]
         
