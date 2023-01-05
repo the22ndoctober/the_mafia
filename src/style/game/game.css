@@ -2,13 +2,16 @@
     margin-top: 50px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    column-gap: 100px;
 }
 
 .players{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    width: 640px;
+    max-width: 640px;
+    
 }
 
 .playersWrap{

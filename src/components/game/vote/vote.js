@@ -10,15 +10,9 @@ export default function Vote({isOpen}){
 
     const currentExhibition = useSelector(selectExhibition)
     const dispatch = useDispatch()
-    const id = isOpen ? 'simple-popper' : undefined;
 
     return(
-        <div>
-            <Popper
-                id={id} 
-                open={isOpen}
-            >
-                <Box className='vote__box'>
+                isOpen && <Box className='vote__box'>
                     <h1>Exposed players:</h1>
                     <div className="vote__exposed">
                       
@@ -34,8 +28,7 @@ export default function Vote({isOpen}){
 
                     </div>
                 </Box>
-            </Popper>
-        </div>
+        
      )
 
 

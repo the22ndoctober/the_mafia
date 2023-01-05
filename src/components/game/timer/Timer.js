@@ -3,7 +3,7 @@ import CircularProgress from "./timerItem/TimerItem"
 import '../../../style/game/timer/timer.css'
 
 
-function Timer() {
+function Timer({isOpen}) {
   
   const [sec, setSec] = useState(60)
   const [isCounting, setIsCounting] = useState(false)

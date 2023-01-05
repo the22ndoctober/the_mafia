@@ -18,7 +18,7 @@ export default function App() {
     <Router>
       <div className='header'>
         <div className="logo">
-          MAFIA GAME
+          MAFLO GAMES
         </div>
         <nav className='navigation'>
           <div className='navigation__element navigation__home'>

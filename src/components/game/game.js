@@ -13,8 +13,10 @@ export default function Game(){
     return(
         <div className='game'>
             <PlayersWrap isOpen={showVote} openVotePopup={openVotePopup} closeVotePopup={closeVotePopup}/>
-            <Vote isOpen={showVote}/>
-            <Timer/>
+            <div className="gameTools">
+                <Vote isOpen={showVote}/>
+                <Timer isOpen={showVote}/>
+            </div>
         </div>  
     )
 
