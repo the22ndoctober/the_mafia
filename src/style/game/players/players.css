@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     column-gap: 12px;
+    min-height: 42px;
 }
 
 .player__name {
@@ -24,11 +25,12 @@
     box-sizing: border-box;
 }
 .player__exposed{
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
-    min-width: 38px;
-    min-height: 38px;
-    text-align: center;
+    min-width: 42px;
+    min-height: 42px;
 }
 .player__exposed-hidden{
     display: none;
@@ -49,6 +51,7 @@
 
 .player__speakbutton{
     padding: 10px;
+    min-height: 36px;
     color: #fff;
     background-color: rgb(43, 138, 227);
 }
@@ -60,10 +63,16 @@
 .player__roleDropdown{
     display: flex;
     background-color: #fff;
-    
-    height: 30px;
+    margin: 0;
+    min-height: 36px;
     align-items: center;
     
+}
+
+.player__role .css-1869usk-MuiFormControl-root{
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .player__roleOption{

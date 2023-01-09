@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.timer__mt100{
+    margin-top: -100px;
+}
+
 .timer__button{
     margin-top: 15px;
     display: flex;

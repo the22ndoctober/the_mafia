@@ -1,6 +1,7 @@
 import {React, useState} from 'react' 
 import Vote from './vote/vote'
 import '../../style/game/game.css'
+import '../../style/game/gameTools/gameTools.css'
 import PlayersWrap from './playersWrap/playersWrap'
 import Timer from './timer/Timer'
 

@@ -37,7 +37,7 @@ function Timer({isOpen}) {
   }
 
   return (
-    <div className="timer">
+    <div className={`timer ${!isOpen && 'timer__mt100'}`}>
       
       
       <CircularProgress
