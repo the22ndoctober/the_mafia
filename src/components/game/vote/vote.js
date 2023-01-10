@@ -1,6 +1,4 @@
 import React from 'react' 
-import Box from '@mui/material/Box';
-import Popper from '@mui/material/Popper'
 import '../../../style/game/vote/vote.css'
 import enums from '../../../store/enums';
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,7 +10,7 @@ export default function Vote({isOpen}){
     const dispatch = useDispatch()
 
     return(
-                isOpen && <Box className='vote__box'>
+                isOpen && <div className='vote__box'>
                     <h1>Exposed players:</h1>
                     <div className="vote__exposed">
                       
@@ -27,7 +25,7 @@ export default function Vote({isOpen}){
                     <div className="vote__voters">
 
                     </div>
-                </Box>
+                </div>
         
      )
 

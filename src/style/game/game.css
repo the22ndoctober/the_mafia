@@ -13,7 +13,10 @@
     min-width: 600px;
     
 }
-
+.players__info{
+    display: flex;
+    color: #fff;
+}
 .playersWrap{
     display: flex;
     flex-direction: column;

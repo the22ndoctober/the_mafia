@@ -32,7 +32,12 @@ export default function PlayersWrap({isOpen, openVotePopup,closeVotePopup}){
         <>
 
             <div className="players">
-                
+                <div className="players__info">
+                    <div>Name</div>
+                    {showRoles && <div>Role</div>}
+                    <div>Exposed</div>
+                    <div>Voted</div>
+                </div>
                 <div className="playersWrap">
                     {playersList.map(player=>{
                         return <Player  key={player.slot}

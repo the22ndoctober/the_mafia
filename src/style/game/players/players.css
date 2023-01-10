@@ -1,3 +1,4 @@
+
 .player__row{
     display: flex;
     align-items: center;
@@ -50,10 +51,10 @@
 }
 
 .player__speakbutton{
-    padding: 10px;
+    cursor: pointer;
     min-height: 36px;
     color: #fff;
-    background-color: rgb(43, 138, 227);
+    background-color: transparent;
 }
 
 .player__role{
