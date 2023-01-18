@@ -12,8 +12,6 @@ const enums = Object.freeze({
 
     playerStatuses:{
         alive: 'alive',
-        active: 'active',
-        onVote: 'onVote',
         voted: 'voted',
         killed: 'killed',
         muted: 'muted',
