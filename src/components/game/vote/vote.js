@@ -16,15 +16,14 @@ export default function Vote({isOpen}){
                       
                         {currentExhibition.map(ex=>{
                             return(
+                                
                                 <div className="vote__exposedItem" style={{backgroundColor: enums.playerColors[ex.exposed]}}>{ex.exposed+1}</div>
                             )
                         })}
 
                     </div>
                     
-                    <div className="vote__voters">
-
-                    </div>
+                    
                 </div>
         
      )

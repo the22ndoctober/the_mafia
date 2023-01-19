@@ -8,7 +8,7 @@ import { makeActive, pullOnVote, removeFromVote, selectActive, selectExhibition}
 import {selectStatus} from '../../../store/reducers/day/playersStatuses/playersStatuses'
 import { useEffect } from 'react'
 
-export default function Player({slot,name,color,showRoles}){
+export default function Player({slot,name,color,showRoles,vote}){
     const dispatch = useDispatch()
     const active = useSelector(selectActive)
     const statuses = useSelector(selectStatus)
@@ -16,21 +16,18 @@ export default function Player({slot,name,color,showRoles}){
     const [exposed,setExposed] = useState('none')
     const [blockerColor, setBlockerColor] = useState('')
 
-    useEffect(()=>{
-        exhibation.some(ex=> ex.pull === slot) &&
-            setExposed(exhibation.find(ex => ex.pull === slot).exposed)
-    }, [exhibation])
+    const beExposed = ()=>{
+        dispatch(pullOnVote(slot))
+    }
 
-    useEffect(()=>{
-        active === slot && document.addEventListener('keydown', beExposedKey, true)
-        return ()=>{
-            document.removeEventListener('keydown', beExposedKey, true)
-        }
-    },[active])
+    const activate = ()=>{
+        dispatch(makeActive(slot))
+    }
 
-    useEffect(()=>{
-        setBlockerColor(changeBlockerColor)
-    }, [statuses])
+    const remove = ()=>{
+        dispatch(removeFromVote(exposed))
+        setExposed('none')
+    }
 
     const changeBlockerColor = ()=>{
         switch(statuses[slot]){
@@ -49,7 +46,6 @@ export default function Player({slot,name,color,showRoles}){
     }
 
     const beExposedKey = (e)=>{
-        console.log(e.key)
         switch(e.key){
             case '1': dispatch(pullOnVote(0))
             break
@@ -74,25 +70,31 @@ export default function Player({slot,name,color,showRoles}){
         }
     }
 
-    const beExposed = ()=>{
-        dispatch(pullOnVote(slot))
-    }
 
-    const activate = ()=>{
-        dispatch(makeActive(slot))
-    }
+    useEffect(()=>{
+        exhibation.some(ex=> ex.pull === slot) &&
+            setExposed(exhibation.find(ex => ex.pull === slot).exposed)
+    }, [exhibation])
 
-    const remove = ()=>{
-        dispatch(removeFromVote(exposed))
-        setExposed('none')
-    }
+    useEffect(()=>{
+        active === slot && document.addEventListener('keydown', beExposedKey, true)
+        return ()=>{
+            document.removeEventListener('keydown', beExposedKey, true)
+        }
+    },[active])
 
+    useEffect(()=>{
+        setBlockerColor(changeBlockerColor)
+    }, [statuses])
+
+
+    
     
     
      return(
     <div className="player__row" >
         
-        <button className='player__speakbutton' onClick={statuses[slot] === enums.playerStatuses.alive && activate}><svg fill="#fff" height="20px" width="20px" version="1.1" id="Layer_1" viewBox="0 0 128 128"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M94.8,51v11.4c0,15.5-12.6,28-28,28h-4.5c-15.5,0-28-12.6-28-28V51h-6.5v11.4c0,17.5,13.2,31.9,30.2,34.1v14.1l-10.2,8.6H43 v5.4h23.9h4.7h14.5v-5.4h-4.7l-10.5-8.9V96.6c17.1-2.1,30.4-16.5,30.4-34.1V51H94.8z"></path> <path d="M73.7,60.7v-6.6h13.7v-8.6H73.7V39h13.7v-8.6H73.7v-6.6h13.6C86.9,12.7,77.8,3.7,66.6,3.7h-4.2c-11.2,0-20.3,9-20.6,20.1 h13.1v6.6H41.7V39h13.2v6.6H41.7v8.6h13.2v6.6H41.7v0.6C41.7,72.7,51,82,62.4,82h4.2c11.4,0,20.7-9.3,20.7-20.7v-0.6H73.7z"></path> </g></svg></button>
+        <button className='player__speakbutton' onClick={statuses[slot] === enums.playerStatuses.alive && !vote ? activate : ()=>{}}><svg fill="#fff" height="20px" width="20px" version="1.1" id="Layer_1" viewBox="0 0 128 128"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M94.8,51v11.4c0,15.5-12.6,28-28,28h-4.5c-15.5,0-28-12.6-28-28V51h-6.5v11.4c0,17.5,13.2,31.9,30.2,34.1v14.1l-10.2,8.6H43 v5.4h23.9h4.7h14.5v-5.4h-4.7l-10.5-8.9V96.6c17.1-2.1,30.4-16.5,30.4-34.1V51H94.8z"></path> <path d="M73.7,60.7v-6.6h13.7v-8.6H73.7V39h13.7v-8.6H73.7v-6.6h13.6C86.9,12.7,77.8,3.7,66.6,3.7h-4.2c-11.2,0-20.3,9-20.6,20.1 h13.1v6.6H41.7V39h13.2v6.6H41.7v8.6h13.2v6.6H41.7v0.6C41.7,72.7,51,82,62.4,82h4.2c11.4,0,20.7-9.3,20.7-20.7v-0.6H73.7z"></path> </g></svg></button>
         <div className={`player__background ${active === slot ? 'player__background-active' : ''}` } style={{backgroundColor: color}} >    
             <div className="player__blocker" style={statuses[slot] === enums.playerStatuses.alive ? {display:'none'} : {display: 'flex', backgroundColor: blockerColor}}>{statuses[slot].toUpperCase()}</div>
             <div className="player__name" onClick={beExposed}>{`${slot+1}.`} {name}</div>

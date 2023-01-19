@@ -6,16 +6,16 @@ export const playersStatusesSlice = createSlice({
   name: 'playersStatuses',
   initialState: {
     values: [
-        enums.playerStatuses.voted,
-        enums.playerStatuses.alive,
-        enums.playerStatuses.voted,
         enums.playerStatuses.alive,
         enums.playerStatuses.alive,
-        enums.playerStatuses.killed,
-        enums.playerStatuses.killed,
-        enums.playerStatuses.deleted,
-        enums.playerStatuses.killed,
-        enums.playerStatuses.killed
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive,
+        enums.playerStatuses.alive
     ]
     },
   reducers: {

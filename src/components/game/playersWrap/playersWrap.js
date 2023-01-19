@@ -45,6 +45,7 @@ export default function PlayersWrap({isOpen, openVotePopup,closeVotePopup}){
                                         name={player.name} 
                                         color={enums.playerColors[player.slot]}
                                         showRoles={showRoles}
+                                        vote={isOpen}
                                         />
                     })}
                 </div>
