@@ -26,6 +26,7 @@ export default function PlayersWrap({isOpen, openVotePopup,closeVotePopup}){
     
     const [showRoles, setShowRoles] = useState(true)
 
+
     
 
     return(
@@ -45,7 +46,7 @@ export default function PlayersWrap({isOpen, openVotePopup,closeVotePopup}){
                                         name={player.name} 
                                         color={enums.playerColors[player.slot]}
                                         showRoles={showRoles}
-                                        vote={isOpen}
+                                        isVote={isOpen}
                                         />
                     })}
                 </div>

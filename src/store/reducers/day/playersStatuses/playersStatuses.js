@@ -14,13 +14,13 @@ export const playersStatusesSlice = createSlice({
         enums.playerStatuses.alive,
         enums.playerStatuses.alive,
         enums.playerStatuses.alive,
-        enums.playerStatuses.alive,
+        enums.playerStatuses.deleted,
         enums.playerStatuses.alive
     ]
     },
   reducers: {
     setStatus: (state,action) =>{
-      state.values = actions.setStatus(state.values, action.payload)
+      state.values = actions.setStatus(state.values, action)
     },  
   }
 })

@@ -8,6 +8,7 @@
 }
 .player__blocker{
     position: absolute;
+    transition-duration: 0.7s;
     opacity: 0.9;
     width: 100%;
     height: 100%;
@@ -114,4 +115,21 @@
 
 .player__onVote{
     color: #fff;
+}
+
+.player__vote{
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    background-color: rgb(58, 184, 90);
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 3px dashed #fff;
 }

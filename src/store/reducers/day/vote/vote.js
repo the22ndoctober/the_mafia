@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { act } from 'react-dom/test-utils'
 import * as actions from '../../../actions/day/vote/vote'
 import enums from '../../../enums'
 
@@ -18,8 +17,11 @@ export const voteSlice = createSlice({
     getVote: (state,action)=>{
       state.values = actions.getVote(action.payload)
     },
+    getVoters: (state,action)=>{
+      state.didNotVote = actions.getVoters(action.payload)
+    },
     voteFor: (state,action)=>{
-
+      state = actions.voteFor(state, action.payload)
     },
     removeVote: (state, action)=>{
       
@@ -29,7 +31,7 @@ export const voteSlice = createSlice({
   }
 })
 
-export const {activateСandidature, getVote} = voteSlice.actions
+export const {activateСandidature,getVoters, getVote, voteFor} = voteSlice.actions
 
 export const selectVote = (state) => state.vote
 
