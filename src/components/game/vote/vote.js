@@ -10,7 +10,7 @@ export default function Vote({isOpen}){
     const vote = useSelector(selectVote)
     const dispatch = useDispatch()
 
-    const voteFor = (e)=>{
+    const voteForSMBD = (e)=>{
         switch(e.key){
             case '1': dispatch(voteFor(0))
             break
@@ -36,9 +36,9 @@ export default function Vote({isOpen}){
     }
 
     useEffect(()=>{
-        isOpen && document.addEventListener('keydown', voteFor, true)
+        isOpen && document.addEventListener('keydown', voteForSMBD, true)
         return ()=>{
-            document.removeEventListener('keydown', voteFor, true)
+            document.removeEventListener('keydown', voteForSMBD, true)
         }
     },[isOpen])
 

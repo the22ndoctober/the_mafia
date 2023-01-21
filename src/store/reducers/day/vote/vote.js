@@ -7,7 +7,7 @@ export const voteSlice = createSlice({
   initialState: {
     values:[],
     didNotVote: [],
-    currentCandidature: 'none'
+    currentCandidature: 2
 
     },
   reducers: {

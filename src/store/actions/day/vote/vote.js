@@ -24,11 +24,14 @@ export const getVoters = statuses =>{
 }
 
 export const voteFor = (state, id)=>{
-    let newVote = {}
-    if(state.currentCandidature != 'none'){
-        if(state.didNotVote.some(value=> value === id)){
-            newVote.values = state.values.map(value=>{
-                if(value.candidature === state.currentCandidature){
+    let newVote = {values: [], currentCandidature: state.currentCandidature, didNotVote: state.didNotVote}
+    state.values.forEach(value=> newVote.values.push(value))
+    console.log(newVote)
+    newVote.currentCandidature = 2
+    if(newVote.currentCandidature != 'none'){
+        if(newVote.didNotVote.some(value=> value === id)){
+            newVote.values.map(value=>{
+                if(value.candidature === newVote.currentCandidature){
                     return {pull: value.pull, candidature: value.candidature, votes:[...value.votes,id]}
                 }
                 return value
@@ -36,13 +39,9 @@ export const voteFor = (state, id)=>{
             })
             newVote.didNotVote = newVote.didNotVote.filter(value=> value != id)
         }
-        if(!state.didNotVote.some(value=> value === id)){
+        if(newVote.didNotVote.some(value=> value !== id)){
             alert('player already voted!')
         }
-    }
-    else{
-        console.log('hut')
-        newVote = state
     }
     return newVote
 }
