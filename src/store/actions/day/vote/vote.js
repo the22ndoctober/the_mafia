@@ -25,7 +25,8 @@ export const getVoters = statuses =>{
 
 export const voteFor = (state, id)=>{
     let newVote = {values: [], currentCandidature: state.currentCandidature, didNotVote: state.didNotVote}
-    state.values.forEach(value=> newVote.values.push(value))
+    state.values.forEach(value=> newVote.values.push({...value}))
+    newVote.values.map(value=> value.votes = [])
     console.log(newVote)
     newVote.currentCandidature = 2
     if(newVote.currentCandidature != 'none'){
