@@ -14,7 +14,7 @@ export const playersStatusesSlice = createSlice({
         enums.playerStatuses.alive,
         enums.playerStatuses.alive,
         enums.playerStatuses.alive,
-        enums.playerStatuses.deleted,
+        enums.playerStatuses.alive,
         enums.playerStatuses.alive
     ]
     },

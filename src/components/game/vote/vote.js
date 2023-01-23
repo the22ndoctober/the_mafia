@@ -2,12 +2,13 @@ import React from 'react'
 import '../../../style/game/vote/vote.css'
 import enums from '../../../store/enums';
 import { useSelector, useDispatch } from 'react-redux'
-import { selectVote, voteFor } from '../../../store/reducers/day/vote/vote';
+import { selectVote, selectCandidature, voteFor, changeCandidature } from '../../../store/reducers/day/vote/vote';
 import { useEffect } from 'react';
 
 export default function Vote({isOpen}){
 
     const vote = useSelector(selectVote)
+    const candidature = useSelector(selectCandidature)
     const dispatch = useDispatch()
 
     const voteForSMBD = (e)=>{
@@ -35,6 +36,10 @@ export default function Vote({isOpen}){
         }
     }
 
+    const activateCandidature = (e)=>{
+        dispatch(changeCandidature(e))
+    }
+
     useEffect(()=>{
         isOpen && document.addEventListener('keydown', voteForSMBD, true)
         return ()=>{
@@ -47,10 +52,15 @@ export default function Vote({isOpen}){
                     <h1>Exposed players:</h1>
                     <div className="vote__exposed">
                       
-                        {vote.values.map(ex=>{
+                        {vote.onVote.map(ex=>{
                             return(
-                                
-                                <div className="vote__exposedItem" style={{backgroundColor: enums.playerColors[ex.candidature]}}>{ex.candidature+1}</div>
+                                <div className="vote__exposedContainer">
+                                    <div className={candidature === ex.candidature ? 'vote__exposedItem vote__exposedItem-active' : 'vote__exposedItem'} onClick={()=>{activateCandidature(ex.candidature)}} style={{backgroundColor: enums.playerColors[ex.candidature]}}>{ex.candidature+1}</div>
+                                    <div>Voted by:</div>
+                                    {ex.votes.length > 0 && ex.votes.map(vote=> <div className="vote__exposedItem" style={{backgroundColor: enums.playerColors[vote]}}>{vote+1}</div>)}
+
+                                </div>
+
                             )
                         })}
 

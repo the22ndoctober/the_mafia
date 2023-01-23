@@ -10,10 +10,19 @@
 
 .vote__exposed{
     display: flex;
+    flex-direction: column;
+    row-gap: 10px;
     align-items: center;
     justify-content: center;
     width: 100%;
     column-gap: 5px;
+}
+
+.vote__exposedContainer{
+    display: flex;
+    column-gap: 9px;
+    font-size: 16px;
+    align-items: center;
 }
 
 .vote__exposedItem{
@@ -22,5 +31,9 @@
     width: 40px;
     height: 40px;
     text-align: center;
+    cursor: pointer;
 }
 
+.vote__exposedItem-active{
+    border: 3px solid rgb(223, 89, 12);
+}

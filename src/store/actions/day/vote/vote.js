@@ -24,25 +24,33 @@ export const getVoters = statuses =>{
 }
 
 export const voteFor = (state, id)=>{
-    let newVote = {values: [], currentCandidature: state.currentCandidature, didNotVote: state.didNotVote}
-    state.values.forEach(value=> newVote.values.push({...value}))
-    newVote.values.map(value=> value.votes = [])
-    console.log(newVote)
-    newVote.currentCandidature = 2
-    if(newVote.currentCandidature != 'none'){
-        if(newVote.didNotVote.some(value=> value === id)){
-            newVote.values.map(value=>{
-                if(value.candidature === newVote.currentCandidature){
-                    return {pull: value.pull, candidature: value.candidature, votes:[...value.votes,id]}
-                }
-                return value
-                
-            })
-            newVote.didNotVote = newVote.didNotVote.filter(value=> value != id)
+    if(state.currentCandidature !== 'none'){
+        if(state.values.didNotVote.some(value=> value===id)){
+            return {
+                onVote: state.values.onVote.map(value=>{
+                    if(value.candidature === state.currentCandidature){
+                        return {pull: value.pull, candidature: value.candidature, votes:[...value.votes,id]}
+                    }
+                    return value
+                }),
+                didNotVote: state.values.didNotVote.filter(player=> player !== id)
+            }
         }
-        if(newVote.didNotVote.some(value=> value !== id)){
-            alert('player already voted!')
+        if(state.values.onVote.some(vote=> vote.votes.some(value=> value === id))){
+            return {
+                onVote: state.values.onVote.map(value=>{
+                    return {...value, votes: value.votes.filter(vote=> vote !== id)}
+                }),
+                didNotVote: [...state.values.didNotVote, id]
+            }
         }
+        alert('player cannot vote')
     }
-    return newVote
+    return state.values
+    
+}
+
+export const changeCandidature = (state, id)=>{
+    if(state === id) return 'none'
+    return id
 }
