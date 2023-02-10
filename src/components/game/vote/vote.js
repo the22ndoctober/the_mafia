@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../style/game/vote/vote.css'
 import enums from '../../../store/enums';
 import { useSelector, useDispatch } from 'react-redux'
-import { selectVote, selectCandidature, voteFor, changeCandidature } from '../../../store/reducers/day/vote/vote';
+import { selectVote, selectCandidature, voteFor, changeCandidature,selectNext } from '../../../store/reducers/day/vote/vote';
 import { useEffect } from 'react';
 
 export default function Vote({isOpen}){
@@ -32,6 +32,8 @@ export default function Vote({isOpen}){
             case '9': dispatch(voteFor(8))
             break
             case '0': dispatch(voteFor(9))
+            break
+            case 'Tab': dispatch(selectNext())
             break
         }
     }
@@ -65,6 +67,9 @@ export default function Vote({isOpen}){
                         })}
 
                     </div>
+                    <button className="default__button vote__resultBTN">
+                        End vote
+                    </button>
                     
                     
                 </div>

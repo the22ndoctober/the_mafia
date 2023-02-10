@@ -34,3 +34,10 @@
     color: #fff;
     padding: 10px;
 }
+
+.default__button {
+    font-size: 20px;
+    background-color:rgb(0, 187, 255);
+    color: #fff;
+    padding: 10px;
+}

@@ -27,13 +27,19 @@ export const voteSlice = createSlice({
     },
     changeCandidature: (state,action)=>{
       state.currentCandidature = actions.changeCandidature(state.currentCandidature, action.payload)
+    },
+    selectNext: (state)=>{
+      state.currentCandidature = actions.selectNext(state.currentCandidature, state.values.onVote, state.currentCandidature)
+    },
+    clearVote: (state)=>{
+      state = actions.clearVote()
     }
 
     
   }
 })
 
-export const {activateСandidature,getVoters, getVote, voteFor, changeCandidature} = voteSlice.actions
+export const {activateСandidature,getVoters, getVote, voteFor, changeCandidature,selectNext,clearVote} = voteSlice.actions
 
 export const selectVote = (state) => state.vote.values
 

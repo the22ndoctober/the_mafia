@@ -54,3 +54,20 @@ export const changeCandidature = (state, id)=>{
     if(state === id) return 'none'
     return id
 }
+
+export const selectNext = (currentCandidature, state,id)=>{
+    const indexOfCandidature = state.findIndex(item=> item.candidature === id)
+    if(indexOfCandidature + 1 === state.length || currentCandidature === 'none') return state[0].candidature
+    return (state[indexOfCandidature+1].candidature)
+}
+
+export const clearVote = ()=>{
+    return {
+        values:{
+          onVote:[],
+          didNotVote: []
+        },    
+        currentCandidature: 'none'
+    
+    }
+}
